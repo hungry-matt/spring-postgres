@@ -4,8 +4,10 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+@Profile("mysql")
 @Configuration
 public class PostgresConfiguration {
 
@@ -33,8 +35,7 @@ public class PostgresConfiguration {
         dataSource.setMinIdle(5);
         dataSource.setMaxIdle(10);
         dataSource.setPoolPreparedStatements(true);
-        JdbcTemplate postgres = new JdbcTemplate(dataSource);
-        return postgres;
+        return new JdbcTemplate(dataSource);
     }
 
 }
