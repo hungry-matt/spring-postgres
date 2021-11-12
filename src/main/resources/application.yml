@@ -1,20 +1,5 @@
 spring:
-  datasource:
-    host: localhost
-    port: 3306
-    username: root
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${spring.datasource.host}:${spring.datasource.port}
-
-
-app:
-  datasource:
-    postgres:
-      host: localhost
-      port: 5432
-      username: postgres
-      password: root
-      databasename: test
-      driver: org.postgresql.Driver
-      url: jdbc:postgresql://${app.datasource.postgres.host}:${app.datasource.postgres.port}/${app.datasource.postgres.databasename}
+  profiles:
+    active: postgresql
+  jpa:
+    show-sql: true
